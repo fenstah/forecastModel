@@ -1,0 +1,14 @@
+base
+devtools
+slidify
+shiny
+slidifyLibraries
+XML
+zoo
+timeDate
+forecast
+tseries
+fma
+expsmooth
+lmtest
+fpp
