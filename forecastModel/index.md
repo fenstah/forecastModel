@@ -8,9 +8,7 @@ highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
 widgets     : [bootstrap, shiny, interactive, mathjax]            # {mathjax, quiz, bootstrap}
 mode        : standalone    # {standalone, draft}
-github:
-    user: fenstah
-    repo: forecastModel    
+knit        : slidify::knit2slides
 --- 
 
 <style>
@@ -64,35 +62,12 @@ quarter.
 
 ---
 
-
 ## Putting it all together
-<div class="row-fluid">
-  <div class="span4">
-    <form class="well">
-      <span class="help-block">Forecasting model Selection:</span>
-      <label class="control-label" for="var">Choose forecast model</label>
-      <select id="var"><option value="Exponential Smoothing" selected>Exponential Smoothing</option>
-<option value="Regression">Regression</option>
-<option value="Mean">Mean</option>
-<option value="Naive">Naive</option>
-<option value="Seasonal Naive">Seasonal Naive</option>
-<option value="Arima">Arima</option>
-<option value="Neural Network">Neural Network</option></select>
-      <script type="application/json" data-for="var" data-nonempty="">{}</script>
-      <label class="checkbox" for="showTargets">
-        <input id="showTargets" type="checkbox" checked="checked"/>
-        <span>Show Targets</span>
-      </label>
-      <div>
-        <label class="control-label" for="range">Number of months to forecast</label>
-        <input id="range" type="slider" name="range" value="6" class="jslider" data-from="1" data-to="24" data-step="1" data-skin="plastic" data-round="FALSE" data-locale="us" data-format="#,##0.#####" data-scale="|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|" data-smooth="FALSE"/>
-      </div>
-    </form>
-  </div>
-  <div class="span8">
-    <div id="forecast" class="shiny-plot-output" style="width: 100% ; height: 400px"></div>
-  </div>
-</div>
+- Forecast Method : Exponential Smoothing
+- Show Targets: TRUE
+- Forecast length: Six Months
+
+<img src="assets/fig/unnamed-chunk-1-1.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" />
 
 --- 
 
@@ -106,18 +81,12 @@ $$
 \text{MASE} = \text{mean}(|q_{j}|).
 \end{aligned}
 $$
-Mean Absolute Squared Error, proposed by Hyndman and Koehler (2006), is an alternative to percentage errors when comparing forecast accuracy across series on different scales. For a seasonal naive forecast (e.g.), the scaled error can be defined using:
-$$
-\begin{aligned}
-q_{j} = \frac{\displaystyle e_{j}}{\displaystyle\frac{1}{T-m}\sum_{t=m+1}^T
-|y_{t}-y_{t-m}|} \end{aligned}
-$$
 
 The forecast accuracy measures for the forecast selected in the previous slide are:
-<div class="row-fluid">
-  <div class="span8">
-    <div id="acc" class="shiny-html-output"></div>
-  </div>
-</div>
+
+```
+##                   ME    RMSE     MAE       MPE    MAPE MASE      ACF1
+## Training set 1242604 8860202 5962644 -4.443667 33.3792    1 0.2514169
+```
 
 
