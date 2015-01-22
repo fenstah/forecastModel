@@ -91,7 +91,7 @@ library(fpp)
         else legend("topleft", lty=1, col=c(1,2), legend=c("Actual", "Predicted"))        
     }
     
-    getAccuracy <- function (filter, forecastMethod, filterLabel, forecastperiods=6) {
+    getAccuracy <- function (filter, forecastMethod, forecastperiods=6) {
         timeSeries<-ts(filter[,2],start=c(2013,1), freq=12)
         fit<-switch(forecastMethod, 
                     "regression" = tslm(timeSeries ~ trend + season -1),
@@ -108,33 +108,33 @@ library(fpp)
     current[is.na(current)]<-appPlatNWS.DF[is.na(current$NWS.Total.PostAudit),3]
     current<-current[-length(current$Fiscal.Month),]      
     
-    output$forecast<- renderPlot({
-        args<-list(current)
-        args$forecastMethod <- switch(input$var, 
-                                      "Exponential Smoothing" = "ets",
-                                      "Regression" = "regression",
-                                      "Mean" = "mean",
-                                      "Naive" = "naive",
-                                      "Seasonal Naive" = "snaive", 
-                                      "Arima" = "arima", 
-                                      "Neural Network" = "nnet")        
-        args$filterLabel<-input$var
-        if(input$showTargets) args$targets<-ts.targets
-        args$forecastperiods<-input$range[1]
-        do.call(plotForecast, args)
-    })
-
-    output$acc<- renderTable({
-        accuracyArgs<-list(current)
-        accuracyArgs$forecastMethod <- switch(input$var, 
-                                      "Exponential Smoothing" = "ets",
-                                      "Regression" = "regression",
-                                      "Mean" = "mean",
-                                      "Naive" = "naive",
-                                      "Seasonal Naive" = "snaive", 
-                                      "Arima" = "arima", 
-                                      "Neural Network" = "nnet")        
-        accuracyArgs$filterLabel<-input$var
-        accuracyArgs$forecastperiods<-input$range[1]
-        do.call(getAccuracy, accuracyArgs)
-    }, options = list(width=1000))
+#     output$forecast<- renderPlot({
+#         args<-list(current)
+#         args$forecastMethod <- switch(input$var, 
+#                                       "Exponential Smoothing" = "ets",
+#                                       "Regression" = "regression",
+#                                       "Mean" = "mean",
+#                                       "Naive" = "naive",
+#                                       "Seasonal Naive" = "snaive", 
+#                                       "Arima" = "arima", 
+#                                       "Neural Network" = "nnet")        
+#         args$filterLabel<-input$var
+#         if(input$showTargets) args$targets<-ts.targets
+#         args$forecastperiods<-input$range[1]
+#         do.call(plotForecast, args)
+#     })
+# 
+#     output$acc<- renderTable({
+#         accuracyArgs<-list(current)
+#         accuracyArgs$forecastMethod <- switch(input$var, 
+#                                       "Exponential Smoothing" = "ets",
+#                                       "Regression" = "regression",
+#                                       "Mean" = "mean",
+#                                       "Naive" = "naive",
+#                                       "Seasonal Naive" = "snaive", 
+#                                       "Arima" = "arima", 
+#                                       "Neural Network" = "nnet")        
+#         accuracyArgs$filterLabel<-input$var
+#         accuracyArgs$forecastperiods<-input$range[1]
+#         do.call(getAccuracy, accuracyArgs)
+#     }, options = list(width=1000))

@@ -7,10 +7,8 @@ framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
 widgets     : [bootstrap, shiny, interactive, mathjax]            # {mathjax, quiz, bootstrap}
-mode        : selfcontained    # {standalone, draft}
-github:
-    user: fenstah
-    repo: forecastModel    
+mode        : standalone    # {standalone, draft}
+knit        : slidify::knit2slides
 --- 
 
 <style>
@@ -64,19 +62,45 @@ quarter.
 
 ---
 
-
 ## Putting it all together
-```{r opts.label='shiny'}
-slidifyUI(
-        sidebarPanel(helpText("Forecasting model Selection:"),
-                     selectInput("var", label="Choose forecast model", 
-                                 choices=list("Exponential Smoothing", "Regression", "Mean", "Naive", "Seasonal Naive", "Arima", "Neural Network"),
-                                 selected="Exponential Smoothing"),
-                     checkboxInput("showTargets", "Show Targets", value = TRUE), 
-                     sliderInput("range", label="Number of months to forecast", min=1, max=24, value=c(6))
-        ),
-        mainPanel(plotOutput("forecast"))
-    )    
+- Forecast Method : Exponential Smoothing
+- Show Targets: TRUE
+- Forecast length: Six Months
+
+```{r echo=FALSE, fig.align='center', fig.height=6}
+targets<-c(8881435,15740782,25105396,11531005,13416427,18873008,10479056,10124275,20615725,11746634,14883688,27144702)
+ts.targets<-ts(targets, start=c(2015,1), freq=12)
+                                                       
+yoy.total.nws<-read.csv("data/YOY_NWS.csv")
+yoy.total.nws<-yoy.total.nws[1:6]
+yoy.total.byMonth<-with(yoy.total.nws, aggregate(Sum.of.NWS.MS.Amt.CUS, by=list(NWS.Creditted....MS.Fiscal.Month.Alt.Name), sum))
+yoy.total.byMonth<-yoy.total.byMonth[-length(yoy.total.byMonth$Group.1),]
+colnames(yoy.total.byMonth)<-c("Fiscal.Month", "NWS.Total.PreAudit")
+
+options(scipen=5)
+plotForecast <- function (filter, forecastMethod, filterLabel, targets=NULL, forecastperiods=6) {
+        timeSeries<-ts(filter[,2],start=c(2013,1), freq=12)
+        fit<-switch(forecastMethod, 
+                    "regression" = tslm(timeSeries ~ trend + season -1),
+                    "ets" = ets(timeSeries),
+                    "mean" = meanf(timeSeries, h=forecastperiods),
+                    "naive" = naive(timeSeries, h=forecastperiods),
+                    "snaive" = snaive(timeSeries, h=forecastperiods),
+                    "arima" = auto.arima(timeSeries),
+                    "nnet" = nnetar(timeSeries))
+        fcst<-forecast(fit, h=forecastperiods)
+        projectedNWS<-sum(subset(filter, grepl("^FY2015", Fiscal.Month))[2],fcst$mean)
+        subTitle<-paste("forecast=",format(projectedNWS,big.mark=",",scientific=F))
+        plot(fcst, main=paste("Sales Forecast (",filterLabel,")"), sub=subTitle)
+        lines(fitted(fit), col=2)
+        if(!is.null(targets)) {
+            lines(ts.targets, col=3, lwd = 4)
+            legend("topleft", lty=1, col=c(1,2,3), legend=c("Actual", "Predicted", "Targets"))
+        }
+        else legend("topleft", lty=1, col=c(1,2), legend=c("Actual", "Predicted"))        
+    }
+
+plotForecast(yoy.total.byMonth, "snaive", "Seasonal Naive", ts.targets, 6)
 ```
 
 --- 
@@ -91,20 +115,23 @@ $$
 \text{MASE} = \text{mean}(|q_{j}|).
 \end{aligned}
 $$
-Mean Absolute Squared Error, proposed by Hyndman and Koehler (2006), is an alternative to percentage errors when comparing forecast accuracy across series on different scales. For a seasonal naive forecast (e.g.), the scaled error can be defined using:
-$$
-\begin{aligned}
-q_{j} = \frac{\displaystyle e_{j}}{\displaystyle\frac{1}{T-m}\sum_{t=m+1}^T
-|y_{t}-y_{t-m}|} \end{aligned}
-$$
 
-The forecast accuracy measures for the forecast selected in the previous slide are:
-```{r opts.label='shiny'}
-slidifyUI(
-        mainPanel(            
-            tableOutput("acc")
-        )
-    )
+The forecast accuracy measures for the seasonal naive forecast in the previous slide are:
+```{r echo=FALSE}
+getAccuracy <- function (filter, forecastMethod, forecastperiods=6) {
+        timeSeries<-ts(filter[,2],start=c(2013,1), freq=12)
+        fit<-switch(forecastMethod, 
+                    "regression" = tslm(timeSeries ~ trend + season -1),
+                    "ets" = ets(timeSeries, model="AAN"),
+                    "mean" = meanf(timeSeries, h=forecastperiods),
+                    "naive" = naive(timeSeries, h=forecastperiods),
+                    "snaive" = snaive(timeSeries, h=forecastperiods),
+                    "arima" = auto.arima(timeSeries),
+                    "nnet" = nnetar(timeSeries))
+        return (accuracy(fit))
+    }
+
+getAccuracy(yoy.total.byMonth, "snaive", 6)
 ```
 
 

@@ -38,9 +38,6 @@
     <h2>Forecasting using Hyndman and Athanasopoulos Methods</h2>
     <p>Lenny Fenster<br/>CTO</p>
   </hgroup>
-    <a href="https://github.com/fenstah/forecastModel/zipball/gh-pages" class="example">
-     Download
-    </a>
   <article></article>  
 </slide>
     
@@ -123,33 +120,13 @@ quarter.</p></li>
     <h2>Putting it all together</h2>
   </hgroup>
   <article data-timings="">
-    <div class="row-fluid">
-  <div class="span4">
-    <form class="well">
-      <span class="help-block">Forecasting model Selection:</span>
-      <label class="control-label" for="var">Choose forecast model</label>
-      <select id="var"><option value="Exponential Smoothing" selected>Exponential Smoothing</option>
-<option value="Regression">Regression</option>
-<option value="Mean">Mean</option>
-<option value="Naive">Naive</option>
-<option value="Seasonal Naive">Seasonal Naive</option>
-<option value="Arima">Arima</option>
-<option value="Neural Network">Neural Network</option></select>
-      <script type="application/json" data-for="var" data-nonempty="">{}</script>
-      <label class="checkbox" for="showTargets">
-        <input id="showTargets" type="checkbox" checked="checked"/>
-        <span>Show Targets</span>
-      </label>
-      <div>
-        <label class="control-label" for="range">Number of months to forecast</label>
-        <input id="range" type="slider" name="range" value="6" class="jslider" data-from="1" data-to="24" data-step="1" data-skin="plastic" data-round="FALSE" data-locale="us" data-format="#,##0.#####" data-scale="|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|;|" data-smooth="FALSE"/>
-      </div>
-    </form>
-  </div>
-  <div class="span8">
-    <div id="forecast" class="shiny-plot-output" style="width: 100% ; height: 400px"></div>
-  </div>
-</div>
+    <ul>
+<li>Forecast Method : Exponential Smoothing</li>
+<li>Show Targets: TRUE</li>
+<li>Forecast length: Six Months</li>
+</ul>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfgAAAGwCAMAAABy/YdMAAAApVBMVEX9/v0AAAAAADkAAGUAAP8AOWUAOY8AZo8AZrUAzQA5AAA5ADk5AGU5OWU5OY85j485j7U5j9plAABlADllAGVlOQBlOTllOY9lZgBlZjllZmVltf2POQCPOTmPOWWPj2WPj7WPtY+P27WP29qP2/2xtc61ZgC1ZmW1tWW124+1/v3ajzna24/a/rXa/tra/v3b29/9tWX924/9/rX9/tr9/v3/AACu5YBHAAAAN3RSTlP//////////////////////////////////////////////////////////////////////wD/rn+PdAAAAAlwSFlzAAALEgAACxIB0t1+/AAAGgJJREFUeJztnQtj3Lhxx0PZ52gdX1r5fElb2UmbSGrPSuJdSdzv/9FKgACJx+BB4klg/slZu+RgMMsfBw+Si/3diOpSvysdAKqMEHynQvCdCsF3KgTfqRB8p0LwnQrBdyoE36kQfKdC8J0KwXcqBN+pEHynQvCdCsF3KgTfqRB8p0LwnQrBdyoE36kQfKdC8J0KwXcqBN+pagX/+nkYPvwQ3r77Dtq9fR2o7rdX8cTLPN88gJVuEI9v8nBPglqjNUY+vny821NVJFUKniAYhlvhfXTwT7zM6+dbuNINEsBPZ44I3haBl1UiVQr+5eOHH/RgXiYUU0LOB/aZEX75OAzsoAnHmOy9I1tu/pMU4cbk1CA2zBMrTE+YW1buXql0KSuXEet493+SVwH8tJ8GJex5ojXRf5+Fk/QyFEz5asHPh2dOQsbjieb23bKRGKzg5723cxvw4Qc3npuEd99XT/Tvvxbw04nyIFeqVbRUKNVBXkjx0Xjf/Qc5q8T63n2/kLKvn6d6uOdxNt7Xr0RRpeDpkWVIyaEj/5GEpKDpC9GQIHj5SNPr5mHacjtnLzOmp8w997QU5k39evh5pUtZtYxYx914Yecej4+9/u3jnViW/EfPLWIuefbtEdKoUvBz1pHjQjJnPnyXuTe/eaDJtBw8Bv5C83dqtucMXozX9pR7YoU5ePE0mitdyqpl5DrmM2aNb65jathv/v5VjnwqckfrEzyPYltTQNWCn1te0rlq4GmXy47ekjVm8LfcG8/nuTAEfq50KauWEeqYNhLwYnyk+Jzjv6ctjbBnMv0nH7Gs4McnBK/qmRziCQ1JFdJYS400FeO2gBea4Xk4xoxpUz+54Z6Wwjp4XumyRS0j1MHAi/ERI5bfE3B5z9PNX0nLI38EzHhdPF/mFGGHbx4ZrWlGDKHBHT2c3JgP7rinpfATG9ytfby4i5aFyrA6GHgpvpGBn6pUIieupahGOfYCqhQ8hUAO1XSkpmS9Z3nDDhrfORqmc3QXNyYvBE9L4envDGBtcBe/vKxaRpjOzeDl+Ph8/sJOEmHPE+txnlbuOKovrMuey35xKsZ5fEktV+5yC6/cFdZzmTEWXqtHFRCC71QIvlMh+E6F4DsVgu9UCL5TIfhOheA7FYLvVAi+UyH4ToXgOxWC71QIvlMh+E6F4DsVgu9UCL5TIfhOFQJ+QNWshOADytZTRatC8J0KwXcqBN+pEHynQvCdCsF3KgTfqRB8p0LwnSoBeM+LgrJef1m+hP7ySVkQQNuwVrU5uKqV8+PUkvGX/1qWAUDwFdSVC/zbt7/9eV4O8OZvn4d3v02oCW6yqtB9R+Azfp4s4N33h17++OPpfnz7ej9ePvzj0/eXGTxp/1/md7uiP5iGnJ+nkox/vhsvtyy1XxbwZM/rFwSfpjKrMoFn6wNPeT/K4J/oZgSfojKrMoGnxJ/u1Yx//XzfV1Of8QPVAf6ZLvt/S/r4l0+/zZ3785zqL394QPBpKrMpD/i3vxCyE20yqqdLAD8Pw799oev9/vTrfSfgh7E78DVXkU/D8k+22sxC8PmE4KuqIp8QfFVV5NMg/JurNqMQfDYN0p9c1ZmUax5Pf+NBW615mt4tI3p5aE8mftuqqF59gidUhTuzTAzvaqLuQfCh1ZmUEzzJ759/pb/mxX6ei83h+T07ec/GKqrXoPzNVJ1BccBfYa2mFDy5Rvdx4vl0Nz7f0j+XgYBf7tnJezyiP5RaBO/U3MfPd95Ji//65fv0f9bHL1fw5T0bq6hefYJnHThr2Omv+dGbcxQ8v2cn79lYRe0agFd56gNVAvwXfh9ey3hpz8YqaheCp104+ck2sY+n9+zkPRurqOokueqbEDwdxD/QhzOEUf0D++3tdc/GKo4DPk+kdYDPUQWCN9UHCcEnkQ5+MLxOJgRfQgg+UG2CzxJqN+BzflnBpWsL4OeLbgPwA7iVga8o5a96yh8OPL+BdtF/63zDw5Zf6clj/rl00+OWzYAfrG9TKBQ8u5q2/PV3Lcv8JK1tb3/gz+dznBiqyPiRo2VfkmQ3Z3/608P4utyOvQD9SZfg47AP7uPpnRNHH3+CJRovj2KQi/Ps5uzl5oHdiWUX6sk92S3Ry6YHAm+O9cwVGkPxUT2zWhpz9iVJeifm2wO7E8vuye6sgpm6jYELakkUA3wo+srAL1+SJPdiCfj1TuzUDdyo7FsBr4XmAz6MfPHpnAhe+JIkz/h5zMhOC20ggeB3q/jgTgQvfkly7eMn19MWUkE/4I3BVgM+eDrHrqjNOS18SXJq5H//7YHdoyX3ZJ+CRvWDhzFwQS2Jrtoplgq8xaR0xtsS0T63966CW7rBZ0r5WODd5BOC95rOWWQCTy7maWO5fVVwy3rBA5FFAm82KT2qD5tebwLvtG4OvM0Ewa9qEbzRpvR0rlPwck17wbvIpwSfcnDnU3qL5ZHAm4LdAt5qU3o6h+ANcdUOPjzjQ8hHBa/PshKpCfC26VwGOcMTP6cbfB7yecEbjAqP6n1a4ChqE7yVvN2mE/DD8o9ZucBfl3+YEoOHjQpP5xD8eFDwgYM7BG8KKxi8w6rwdA7Bh4G3kE8MPkLG5yDfN3jIqvDduazg7RVpXW8q+YE3bK4HvFnHAz9kIe8F/hoK3mWVAPyGqysePOKoYvBwUHHBA2Zlp3P9gl8rCgNvJJ8afNjgDsGnAu80KzudywV+kP7AutLnPtODv0p/TF189eBjZHx68p7gp//VAn68xgWv2ZWdziF4Y0vvC95APj14s44FnnbxzYDXzVQ7BM/EwKcn3wr4CNO5nsEbQrqahvWPj491gA8a3A3K32TyAj/kmc+J4I0XuWzgVfaAFcA9Nvig6Vxu8LaKSoA3hnM1TuQfuUqDP1TGVwbeHI0H+BU9YJUBfNB0btBeJFKV4K3BeIB/LAverHrA+9STCzz3bxi1r0awgRd4iDuCh8Va3vQTeT6aH2wVbQKvk88CPmQ6VyP41OSvPJAc4B/TgY8yuKsC/MAMcoAfxhjgTW39OQf4kOncALxKoqOBnx/ViAHePOsrmfEI3mYDD+sh8CpTgXs68CHTuQF8mUB9gRcTXiCvOCo5qu8W/MBfWGx8wINt/RnB696PBB7u5J3gFe7G/iDGdO4OWoLuWOB5eh0e/DkXeDK4e3o3rz27zXUJ8MZ6lnY1OfkU4Feo52zgyTTuchc6nUsL3qOebOCXsZ2lGn41fzv4MwDeMOmLNZ2rOeMPCJ6s5u8BXoEKck8Enq44PY7PO/r4wfgmsmoDPyyvTDb0dxw2gz/D4B/TgDcLwYMVpQBPqZ4RvLkiI/hhNcgE3lwPBw9FawZv5M6sFEcInuqo4Ne2XuWO4H3Ar8e4IvDg6M4EXuN+Vq0URwieSAKflLwHeMZ9E3hACP6o4MHRnTd4zUpxhOCJhO40cVsvPFybEfxjveATkh8MrwVlAy8+TR8FvJF8veAH69uI8mhZhENcAfhTBPC6meIIwRMheFUIPq6KgX9E8IDESyXFwS9dPHgFRwNqII/gd4BPSF78xpwTPJTynuB1s0fFEYIfawM/X73pBnw68h7glZl+efAjgg/XNvBpO3npy9FwNVvBQ+QBq2rAa3sRPNuK4CMJwfcJ3uPKcDbw8jIYYDVsbDcP7RF8tDCgWuT5cg3gyYsA8BB3BK9LA5+MfBLwOvljgU9F3n29QO5KawKvWyD4vWEcC7wWrQ94kDuC1y2qAn+KCH7ygOAttVQHfnmhd/JgMhvAUw+1gQd2VgI+5bBeHkZCtSwtvWF05wFeTHgz+JM90mLg450F4eDjnQY5wK+bc4P3+hUqB/gNPxDuDMdVsdqRquCvOcGfQsELmw+Y8UO8lFf9eIEXmVzjpfxVqR7wu3LfB17cfJLIqxXZQ80Jft02uEoHRLEV/HUsCV6zAME/WrgjeGPFVvDXcSwJXsNjBy9tPB74wVk6IIpt4K/Cv+FSH6Kzgx83g5c3WsHrnmWVAD+YLSJEsQm8zD9YbvAnFbwarg28svEkk1crsodaAPxgsYgRhbZBPfylwUtvzOCly3LQldoqwYP75Ca+AvBXk8lOxQQvz9WgK/THAj/YTSJEoW7Qr4cP2pjuAOCN3A8AXpm+xyG/D7w6e49DPiF4jTs1EK3Uiuyh5gY/OG2Co/AFL1+9ixKLE/xJA6/ykfNZx62AfzSAB+YLsjKDj3+5XnfiCT7B5XrtK1EgePNbIqUhbwW8d/mAILybeskoRiwRwZ/aAr/HaLMPDbxXvTHIZwV/WsGfEDy0pWHw4t86wPshbR686lUdzQHDepm7hXwn4I2mTvDAt1W0q7zDJvBGUy/w6nsF0Hsirf9uDPwG8lHBqyYDebbEn7wZvOuiocbZAP79RvAnFTzQhyg6DHiTaQTwA7NzPFO0ejSucRIBPEFIuZ84fjP3k3QG2P2qahC8+9YoDH6uxiOk3eD1lh0G/zhzf2/r5NddNYH3BeoNfjDausCDa4MbwfuEZH5Uywf86NgisLSmfJXgI3Tdut0+8PBvfIEXEK+eEaUHfzoo+BiDdcAOtHVgVZ+FgkrJ4N0hXU1zAOAk8wEvbxJQWtt6umca/6+9vb0mVQnAb5mdtwVeL+oCr28SSC7TOgN3Ap6Tl8ED00RV8cFvuiqzaTDg7q3VbQbu8D1Cb/CjgbwLPITDBJ7StbT1vDMwg3d8jujgN16N2zL83wz+aqoABO/byQeBVw2Cwb9vGvxgNLaBvxorGMCXfuCvdKCZEPxJAQ+S5108B38qDX4j95TgbRwH4JVnW8+aEYC8AzzY8RrAPzLwxk5+GdutKa94DQb/8nHDz4hv5b7xor7zMp2wzZq/ucCLZuCASzsbqgHPf2ny8sHjlyY3c/cskg68fLHHJyLegejk94DXtkrP2hk7eWpER3YQ+FMM8Pw3ZX1+W3YH923g/aqk2+zpux/8YAEPmK/bDFMsEPyjBB4gv87iebNwepRcnlwHNmbG7+GeAryIJRF4kLwbPGDgAG9o62XwjynAj6+fPfv4Xdy9SsGDcHPpwcXd0Hf4dPKrjcoZvCuwGfxpK/jFSPLgPLApf4wompft4F3ODYMGj5TfC97Q0oPgV8CmTn7p4nXwvKLGwCvm2cEPQluiPqjrBA85VLafIPAa+ZMInhsJDqKA3zSd26GU4I2+DRcGCoE/yW8fRfBgWy+29IuR4i/rdG6PNoK3vNG3mn0P4P5t4BXyhjt2TCbw+peqPMEv3CXw63mUczq3T243RtaG52V2g3eSF67VqikPP5fDN5q6eH2lhO3gWVuvVFN9xrvdGAZ05sekfMHru53gV7pSyl+v8BMfEnjYpbBH427q5EHwpzEqeP/p3F7tA297OM4wdNNMgsCvKX+9mm8HbQEPcIdT/qSAX1JebFeqH9UrDTngVL9Q5LnGXiB46JsYMnjynVvexMOVsZ3mln4FD3E3gxe5c/BSLfWDF2dfA+RUA++q2BO8cRROd1yBTlsHL3b5kATwhkhOQrJOL3aBZw9kxwWfejondtqw0831GCZrqol5+jVQog7wllmm5tACflyTldgo4MFO3gbeHdGsCgZ3Sqete00E3tIns0RWySsD+QF8CTm0tPRLrjMTHbye8hQ8dHqIldQ/nZuzzzIS316PYbImWxjBX/mlGAd4uakyaAFvtJCT1QP8SQfPUx4IzqAaMl4eq2led1SzH/zctRvBX5X37gD9wc/vDOBF8npLnwJ8+umc5QLN3moMY3bJxDYag8GrCe9xfs0lrC39KHGHwKspD4F/1Oo4wKje4TYveKlOjbN+KrjC4+DNFnKuquCBth5o6eeUhz6CSQjeFoMHeFd0bvDy7r3gJzvwI5hUw3TO4TYReJ+92lBO6/WdwV09vtciejWBF8jnAZ9jcGd3uxO8o1gk8M5Qrh5fZHOBl1Nen9cnAZ9hOmd3u6cWD/B+QSjTdvAGnF0+4EVBRHXwesJH/xWq/Bmv+D08eGdLL8kIfkn0TOBzTOesfneCDwxOBw+19B66bkt4B3iuHODNQvAeigJeIw9wzwDe6+fHAlQReAF1UfAq+Rzgs0/nIoAfwdu7e4KQb7vuAL+xi4d+mmS9Smdr6RsY3EmO91US3hpB4Pdw35jwdvDw+zTg80/nEHwV4DHj17cZWvp6wBeYztUEXvo+3V7wW+whpMrTNjD3BqZzkued4KPFID5+WQX49wjez0FgDJb7816KDd7IvYHpnOg5XR2eMVzHIO7u9cMVOcCbubcwuKsJ/HhVu/u0soO3cG9hOlcX+CWEYuAX8jbuTWT86roceL2BrwG8mXsL0zkED4O3cm9iVF8ReOGR6tLgrQ09go8bg/j0RTnwbClDK/cmpnOL64Lcl8d4OO8s3M3gXdzbGNxx3yXB83u7dYB3cm9iOlcJeHl4Vxq8gztmfOwYKgHv4t7GdK4K8FwVgPeR4uiYo/p1MlWBEPw212Ealn+KC14lIZEQfPIa/HVd/kkvBJ+8Bn91CZ6N7aDRHYJPoPOkKsBP87k7w560WPiFswqUG/w++Iqj8Kb+9ZcHeEc34OclkfJUdV5VGrxRycHXwn0EF71Lo/Nu8oojBB9BCH6L60Ah+E7Bj+FffIyna6XgRRPFEYKPoTLg3eQRfGJVC14wURwdGHw93A2/O5JCm8CfmwRfUcLnG9ttBr/aKI4QfBQheH/XwULwDvLnRsF3qc3gFxvFEYI/lhB8p9oOnhspjhD8sXT2J39G8A1pB/gzgm9ACL5T+YNXjRRHCP5Y2gP+jOCPr7M3eQTflHaBPyP4w8sbvGalOELwx9I+8GcEf3Sp4I3kEXxb8gWvWymOEPyxtBP8GcEfXPWAL7LqVb/aC/7cyBo43UoDCpMHzBRHCVa9Sv3zY11rN/iz4ggz/liqBnyhVa+6lhs8wD06eLMQfELZySP4loXgexWC71RG8BB3BN+OEHynMnbyK2wE36QM4M8IvnG5wY8IvkW5wI8Ivk3BnbzMGsE3KATfqyDwSuOO4FsUAF4bxyP4BqWDPyP4HqR18mcd/IjgG5QCHuKO4FuUDP4Mgh8RfHuSwJ8RfDcSO3kTdwTfoATwZyP4EcG3pwW8yh3Bty0OXuN+Vq2Uggj+2NKBA9yTgMfvzhWVH/gxPnj8Jk1hlQIPfHfO0zUqiry4Y8a3Jz/wI353rjUVA28Wgs8hT/Ajgm9Nftzjg8fpXGF5gleFg7ujqxB4nM6V1j7umPHHVxnwOJ0rrkLgd7tGRRKC71S7uON07vgqAx4Hd+VVBDxO58prD3fM+AZUBDxO58qrDPjdrlHRtIM7gm9BRcDjdK68dnDHwV0L2sEdp3MtaAd3zPgmtJ07Tuea0HbuOKpvQtu5I/gmtJ07Tufa0GbuKQZ3+PNj+bWZO07n2tBm7jida0ObueN0rlfhqL5TIfhOhdO5ToWDu06F07lOhRnfqXA616lwVN+pEHynwulcp0o5uEPVrEDwlumceh64XHmpIi8VhRK/dQ3JeEU1fUIE71LIdE5RTZ8QwbsUMqpXVNMnRPAuIfjETqryIgjBJ3ZSlRdBCD6xk6q8CHJP5z6zaaF7dIc6kNwZ//b1LkMcqMzyaOpff3lIHwcqsyL28agjCcF3Kk/wz9jPNyYE36kQfKfCPr5TIfhOtRs8eSLrnl7Ym2/Uv3z6Po6X5QLfsj3Iy7PfFUPQy/oogV8sDichoaxlQw7L6sUzFqv2gidXdV7+8EAOy/PtSGBNkZD46Ltx2R7kZXy63x3LSI7PvX8sDidBoSxlQw6LEIFfLHbtBX+5pQGQB7IIqKeb/5kThCUK3x7m5e2b1zVDg5eXn3+lB8gvFoeTkFDWsiGHZfXiGYtdIX38dGK+/PEHu6TLP898Qq/bQ7zQG0R+Z7fu5e3b3+dW2j8Wi5OQUNayIYdl9bIhFrMCwJO7N+RJPBHZy8cb+rHW7SFepubO8/QGvDzfse7ZOxabk5BQ1rIhh2X14h+LRfvBv36+E09hnqvsne+pbfVC5dOhAV6md2/bMt7qJCSUtWzoYYnYzweM6knNa6clx+bZmTm8KK82eXmmDxHc+cdidxISylo272Gxai/4OTTaIrFefYptbZvW7SFeyKu3v3giU7yMy0zMLxaHk5BQ1rKhh2X24hmLXXvBz7lwr081p96ZDUU8JqwuL/OrfV5mZt6xuJyEhFLmsNiFV+46FYLvVAi+UyH4ToXgOxWC71QIvlMh+E6F4DsVgu9UCL5TIfhOheA7FYLvVAi+UyH4ToXgOxWC71QIvlMh+E6F4DsVgu9UCL5TIfhOheA7FYLvVAi+UyH4ToXgOxWC71QIvlMh+E6F4DsVgu9UTYF/+zr4rbKtLkBE3798pAtIsj/j8mpZkIQvgMUWHNUWYD2UmgLvs6AUZEiXDCXrLT1/+PH6+Z78GUe+YV2GlK1uyhYc1RdgPZRaAj+l5s3D9A/B8fOv777PL+fNPE1pfrIdXPOSoXRVuS/fhcXl5g3LomN8dVO24Ki2AOux1BL4eeFXuiIkXTDsia4WRjL28uGfv9AFowjFadv06sJWlloKsgRfwSsbltVNx3FU1h3EjC8sRpYsA8tIkhRe0pGk77ysJNjHz305bernxcTmDXzZvWV103H5LT55AdZjqTXwL/M6z8uqvzd0KWCiJzoIm1p8tlicUpB225fZ4t+XJWOnDSzjxdVN6YKjI7gA62HUGngx4798ZxvHkSYy40R6AqCpFxYYnkuyDayPF1Y3ZQtPgiuNHkatged9PEEyv5yXpvxtzunL3HZbMp626vM6ovOGdWFRvigy566eL4dSc+DZqP7TMpxnf6aM/Wkalc8N/ttXeerNJ+Q3dJJGenbKdODl13n8kvv3vFiM9UULqCnwMfW/hhmaafvRhOBhvf33tu2HE4LvVAi+U/0//s6IXK1hsKoAAAAASUVORK5CYII=" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -168,21 +145,13 @@ quarter.</p></li>
 \text{Mean absolute percentage error: MAPE} = \text{mean}(|p_{i}|),\\
 \text{MASE} = \text{mean}(|q_{j}|).
 \end{aligned}
-\]
-Mean Absolute Squared Error, proposed by Hyndman and Koehler (2006), is an alternative to percentage errors when comparing forecast accuracy across series on different scales. For a seasonal naive forecast (e.g.), the scaled error can be defined using:
-\[
-\begin{aligned}
-q_{j} = \frac{\displaystyle e_{j}}{\displaystyle\frac{1}{T-m}\sum_{t=m+1}^T
-|y_{t}-y_{t-m}|} \end{aligned}
 \]</p>
 
 <p>The forecast accuracy measures for the forecast selected in the previous slide are:</p>
 
-<div class="row-fluid">
-  <div class="span8">
-    <div id="acc" class="shiny-html-output"></div>
-  </div>
-</div>
+<pre><code>##                   ME    RMSE     MAE       MPE    MAPE MASE      ACF1
+## Training set 1242604 8860202 5962644 -4.443667 33.3792    1 0.2514169
+</code></pre>
 
   </article>
   <!-- Presenter Notes -->
